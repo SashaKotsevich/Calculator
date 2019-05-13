@@ -1,0 +1,6 @@
+.keyboard-wrapper{
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row wrap;
+  margin: 3px;
+}
