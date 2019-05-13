@@ -1,7 +1,10 @@
-.text-field{
+.text_field{
   margin:3px;
   height:60px;
   border: none;
   background: #cfd2d4;
-  
+  text-align: end;
+  padding: 15px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 38px;
 }

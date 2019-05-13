@@ -1,0 +1,28 @@
+.wrapper{
+  display: block;
+  width: 78px;
+  height:45px;  
+  background: #e3e3e3;
+  display: flex;
+  justify-content: center;
+  margin:1px;
+  border: none;
+}
+.wrapper_number{
+  display: block;
+  width: 78px;
+  height:45px;  
+  background: #f6f6f6;
+  display: flex;
+  justify-content: center;
+  margin:1px;
+  border: none;
+}
+.char{
+  align-self: center;
+  font-family: 'Roboto', sans-serif;
+  font-size: 26px;
+}
+.add{
+   background: #000000;
+}

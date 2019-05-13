@@ -1,40 +1,40 @@
 import React, { Component } from "react";
-import NumberButton from "./NumberButton";
-import "../styles/keyboard.css";
+import KeyboardButton from "./KeyboardButton";
+import styles from "../styles/keyboard.css";
 
 class Keyboard extends Component {
 	render() {
 		return (
-			<div className="keyboard-wrapper">
-				<NumberButton val={"%"} />
-				<NumberButton val={"√"} />
-				<NumberButton val={"^"} />
-				<NumberButton val={"1/x"} />
+			<div className={styles.keyboard_wrapper}>
+				<KeyboardButton char={"%"} />
+				<KeyboardButton char={"√"} />
+				<KeyboardButton char={"^"} number={false} />
+				<KeyboardButton char={"1/x"} />
 
-				<NumberButton val={"ce"} />
-				<NumberButton val={"c"} />
-				<NumberButton val={"<-"} />
-				<NumberButton val={"÷"} />
+				<KeyboardButton char={"ce"} />
+				<KeyboardButton char={"c"} />
+				<KeyboardButton char={"<-"} />
+				<KeyboardButton char={"÷"} />
 
-				<NumberButton val={7} />
-				<NumberButton val={8} />
-				<NumberButton val={9} />
-				<NumberButton val={"x"} />
+				<KeyboardButton char={7} />
+				<KeyboardButton char={8} />
+				<KeyboardButton char={9} />
+				<KeyboardButton char={"x"} />
 
-				<NumberButton val={4} />
-				<NumberButton val={5} />
-				<NumberButton val={6} />
-				<NumberButton val={"-"} />
+				<KeyboardButton char={4} />
+				<KeyboardButton char={5} />
+				<KeyboardButton char={6} />
+				<KeyboardButton char={"-"} />
 
-				<NumberButton val={1} />
-				<NumberButton val={2} />
-				<NumberButton val={3} />
-				<NumberButton val={"+"} />
+				<KeyboardButton char={1} />
+				<KeyboardButton char={2} />
+				<KeyboardButton char={3} />
+				<KeyboardButton char={"+"} />
 
-				<NumberButton val={"±"} />
-				<NumberButton val={"0"} />
-				<NumberButton val={"."} />
-				<NumberButton val={"="} />
+				<KeyboardButton char={"±"} />
+				<KeyboardButton char={0} />
+				<KeyboardButton char={"."} />
+				<KeyboardButton char={"="} />
 			</div>
 		);
 	}

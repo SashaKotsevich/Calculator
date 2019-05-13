@@ -1,0 +1,12 @@
+.dropdown{
+  height: 20px;
+  overflow: hidden;
+  padding: 2px;
+  
+}
+.dropdown:focus{
+  height: auto;
+  border: none;
+  outline:none;
+  z-index:12;
+}

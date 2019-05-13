@@ -1,10 +1,11 @@
-.nav-wrapper{
+.nav_wrapper{
   display: flex;
   justify-content: space-between;
   width: 100%;
  }
 .icon{
   
-  width: 40px;
-  height: 40px;
+  width:   40px;
+  height:  40px;
+  margin:  5px;
 }

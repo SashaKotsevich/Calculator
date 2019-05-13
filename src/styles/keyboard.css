@@ -1,4 +1,4 @@
-.keyboard-wrapper{
+.keyboard_wrapper{
   display: flex;
   justify-content: space-between;
   flex-flow: row wrap;
