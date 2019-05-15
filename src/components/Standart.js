@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import Keyboard from "./Keyboard";
+import Keyboard from "../containers/keyboardContainer";
 import CalcScreen from "./CalcScreen";
 class Standart extends Component {
 	render() {
 		return (
 			<>
-				<CalcScreen />
+				<CalcScreen value={this.props.standart.expression} />
 				<Keyboard />
 			</>
 		);

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import Standart from "./Standart";
-import Convert from "./Convert";
+import Standart from "../containers/standartContainer";
+import Convert from "../containers/convertContainer";
 import NavBar from "./NavBar";
 import styles from "../styles/app.css";
 class App extends Component {

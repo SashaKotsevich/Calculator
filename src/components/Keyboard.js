@@ -4,36 +4,37 @@ import styles from "../styles/keyboard.css";
 
 class Keyboard extends Component {
 	render() {
+		console.log(this.props);
 		return (
 			<div className={styles.keyboard_wrapper}>
-				<KeyboardButton char={"%"} />
-				<KeyboardButton char={"√"} />
-				<KeyboardButton char={"^"} number={false} />
-				<KeyboardButton char={"1/x"} />
+				<KeyboardButton char={"%"} action={this.props.addChar} />
+				<KeyboardButton char={"√"} action={this.props.addChar} />
+				<KeyboardButton char={"^"} action={this.props.addChar} />
+				<KeyboardButton char={"1/x"} action={this.props.addChar} />
 
 				<KeyboardButton char={"ce"} />
 				<KeyboardButton char={"c"} />
-				<KeyboardButton char={"<-"} />
-				<KeyboardButton char={"÷"} />
+				<KeyboardButton char={"<-"} action={this.props.removeChar} />
+				<KeyboardButton char={"÷"} action={this.props.addChar} />
 
-				<KeyboardButton char={7} />
-				<KeyboardButton char={8} />
-				<KeyboardButton char={9} />
-				<KeyboardButton char={"x"} />
+				<KeyboardButton char={7} action={this.props.addChar} />
+				<KeyboardButton char={8} action={this.props.addChar} />
+				<KeyboardButton char={9} action={this.props.addChar} />
+				<KeyboardButton char={"*"} action={this.props.addChar} />
 
-				<KeyboardButton char={4} />
-				<KeyboardButton char={5} />
-				<KeyboardButton char={6} />
-				<KeyboardButton char={"-"} />
+				<KeyboardButton char={4} action={this.props.addChar} />
+				<KeyboardButton char={5} action={this.props.addChar} />
+				<KeyboardButton char={6} action={this.props.addChar} />
+				<KeyboardButton char={"-"} action={this.props.addChar} />
 
-				<KeyboardButton char={1} />
-				<KeyboardButton char={2} />
-				<KeyboardButton char={3} />
-				<KeyboardButton char={"+"} />
+				<KeyboardButton char={1} action={this.props.addChar} />
+				<KeyboardButton char={2} action={this.props.addChar} />
+				<KeyboardButton char={3} action={this.props.addChar} />
+				<KeyboardButton char={"+"} action={this.props.addChar} />
 
-				<KeyboardButton char={"±"} />
-				<KeyboardButton char={0} />
-				<KeyboardButton char={"."} />
+				<KeyboardButton char={"±"} action={this.props.addChar} />
+				<KeyboardButton char={0} action={this.props.addChar} />
+				<KeyboardButton char={"."} action={this.props.addChar} />
 				<KeyboardButton char={"="} />
 			</div>
 		);

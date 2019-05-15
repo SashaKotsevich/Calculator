@@ -1,12 +1,11 @@
 .dropdown{
-  height: 20px;
-  overflow: hidden;
-  padding: 2px;
-  
-}
-.dropdown:focus{
-  height: auto;
+  background:rgba(80, 80, 80, 1) ;
   border: none;
-  outline:none;
-  z-index:12;
-}
+  margin: 0 10px;
+  outline: none;
+  padding: 4px;
+  color: #fff;
+  font-size: 18px;
+  
+  
+  }

@@ -1,5 +1,15 @@
-.changeCod{
+.convert_panel{
   display: flex;
-  justify-content: space-between;
- 
+  flex-flow: column nowrap;
+  justify-content: flex-start;
 }
+
+.options_panel{
+  display: flex;  
+ }
+ .reverse_icon{
+   height: 30px;
+   width: 30px;
+   margin: auto;
+   
+ }

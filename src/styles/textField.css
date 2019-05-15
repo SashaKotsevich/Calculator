@@ -2,9 +2,12 @@
   margin:3px;
   height:60px;
   border: none;
-  background: #cfd2d4;
+  background-color: rgba(0, 0, 0, 0 );
   text-align: end;
   padding: 15px;
   font-family: 'Roboto', sans-serif;
   font-size: 38px;
+  color: #ffffff;
+  
 }
+

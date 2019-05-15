@@ -1,15 +1,16 @@
 .main_wrapper{
-  background: #fff;
+  background-image: url(/images/main_background.jpg);
   width: 100vw;
   height:100vh;
+  display: flex;
   }
 
 .app_wrapper{
-  background: #cfd2d4;
+  background: radial-gradient(circle 200px,rgba(80,80,80,0.7),rgba(50,50,60,0.8));
   width: 330px;
   height: 440px;
   margin: auto;
   display: flex;
   flex-flow: column nowrap;
-  justify-content: space-around;
- }
+  justify-content: flex-start;
+   }
