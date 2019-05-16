@@ -4,17 +4,16 @@ import styles from "../styles/keyboard.css";
 
 class Keyboard extends Component {
 	render() {
-		console.log(this.props);
 		return (
 			<div className={styles.keyboard_wrapper}>
 				<KeyboardButton char={"%"} action={this.props.addChar} />
 				<KeyboardButton char={"√"} action={this.props.addChar} />
 				<KeyboardButton char={"^"} action={this.props.addChar} />
-				<KeyboardButton char={"1/x"} action={this.props.addChar} />
-
-				<KeyboardButton char={"ce"} />
-				<KeyboardButton char={"c"} />
 				<KeyboardButton char={"<-"} action={this.props.removeChar} />
+
+				<KeyboardButton char={"c"} />
+				<KeyboardButton char={"("} />
+				<KeyboardButton char={")"} />
 				<KeyboardButton char={"÷"} action={this.props.addChar} />
 
 				<KeyboardButton char={7} action={this.props.addChar} />

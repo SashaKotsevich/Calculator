@@ -1,0 +1,23 @@
+.item_wrapper{
+  background: rgba(40, 40, 40, 0.5);
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  padding: 4px;
+  margin-top:2px;
+}
+ц
+.result{
+  
+  align-self: flex-end;
+  margin-right:10px; 
+}
+.type{
+  align-self: flex-start;
+}
+.date{
+  align-self: flex-end;
+}
+label{
+  color: #fff
+}

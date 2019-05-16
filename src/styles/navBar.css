@@ -2,6 +2,7 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
+  padding-left: 15px;
  }
 .icon{
   width:   25px;
@@ -9,3 +10,4 @@
   margin:  10px;
   padding: 5px;
 }
+

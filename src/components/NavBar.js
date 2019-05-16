@@ -1,14 +1,13 @@
 import React, { Component } from "react";
-
+import BurgerButton from "./BurgerButton";
 import styles from "../styles/navBar.css";
 class NavBar extends Component {
 	render() {
 		return (
 			<nav className={styles.nav_wrapper}>
-				<img
-					src="/images/burger_menu_icon.png"
-					alt="no icon"
-					className={styles.icon}
+				<BurgerButton
+					action={this.props.switchSideBar}
+					state={this.props.application.isSideBar}
 				/>
 			</nav>
 		);
