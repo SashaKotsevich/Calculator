@@ -3,6 +3,7 @@
   width: 280px;
   position: absolute;
   background:  rgba(30, 30, 30, 1);
+  z-index: 10;
   
 }
 

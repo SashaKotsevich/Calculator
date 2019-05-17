@@ -1,22 +1,30 @@
 .item_wrapper{
   background: rgba(40, 40, 40, 0.5);
   display: flex;
-  flex-flow: column nowrap;
-  align-items: center;
+  flex-flow: row nowrap;
+  align-items: space-between;
   padding: 4px;
   margin-top:2px;
 }
-ц
-.result{
+.description{
+  display: flex;
+  flex-flow: column nowrap;
+  width: 100%;
+  justify-content: space-between;
   
+}
+.result{
   align-self: flex-end;
-  margin-right:10px; 
+  margin-right:20px; 
+
 }
 .type{
-  align-self: flex-start;
+  height: 58px;
+  width: 58px;
+  padding: 5px;
 }
 .date{
-  align-self: flex-end;
+  align-self: flex-start;
 }
 label{
   color: #fff
