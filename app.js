@@ -1,19 +1,25 @@
-var express = require("express");
-var path = require("path");
-var cookieParser = require("cookie-parser");
+const express = require("express");
+const path = require("path");
+const dbConnect = require("./dbConnect/mongoConnect");
+const passport = require("passport");
 
-var routes = require("./routes/index");
-var users = require("./routes/users");
+const routes = require("./routes/index");
+const users = require("./routes/users");
+const operations = require("./routes/operations");
+const app = express();
+const cors = require("cors");
 
-var app = express();
-
+app.use(cors());
+app.use(passport.initialize());
+require("./passport/index")(passport);
 app.use(express.json());
 app.use(express.urlencoded());
-app.use(cookieParser());
+
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", routes);
 app.use("/users", users);
+app.use("/operations", operations);
 
 app.use(function(req, res, next) {
 	var err = new Error("Not Found");

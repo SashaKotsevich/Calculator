@@ -1,12 +1,23 @@
-var express = require("express");
-var router = express.Router();
+const express = require("express");
+const router = express.Router();
+const auth = require("../services/auth");
+const passport = require("passport");
+const autorize = passport.authenticate("jwt", { session: false });
 
-/* GET users listing. */
-router.get("/", function(req, res) {
-	res.send("respond with a resource");
+router.post("/signup", (req, res) => {
+	auth.register(req.body).then(data => {
+		res.send(data);
+	});
 });
-router.post("/", (req, res) => {
-	res.json(req.body);
+
+router.post("/login", (req, res) => {
+	auth.login(req.body).then(data => {
+		res.send(data);
+	});
+});
+
+router.get("/me", autorize, (req, res) => {
+	res.send(req.user);
 });
 
 module.exports = router;
