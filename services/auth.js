@@ -4,17 +4,17 @@ const passport = require("passport");
 const User = require("../models/user");
 
 const generateToken = ({ id, name }) => {
-	const token = jwt.sign({ id, name }, "TVShopSecret", {
+	const token = jwt.sign({ id, name }, "ItIsSomeSecretKey", {
 		expiresIn: 3600,
 	});
 	return { token: "Bearer " + token };
 };
 
-const login = async ({ email, password }) => {
+const signIn = async ({ email, password }) => {
 	const user = await User.findOne({ email });
-	if (!user) return { message: "User not found" };
+	if (!user) return { error: "User not found" };
 	if (!bcrypt.compare(password, user.password)) {
-		return { message: "Wrong password." };
+		return { error: "Wrong password." };
 	}
 	let token = await generateToken(user).token;
 
@@ -27,10 +27,10 @@ const login = async ({ email, password }) => {
 	};
 };
 
-const register = async ({ name, email, password }) => {
+const signUp = async ({ name, email, password }) => {
 	const user = await User.findOne({ email });
 	if (user) {
-		return { message: "This email already taken." };
+		return { error: "This email already taken." };
 	}
 	let newUser = new User({
 		name,
@@ -57,6 +57,6 @@ const register = async ({ name, email, password }) => {
 };
 
 module.exports = {
-	register,
-	login,
+	signUp,
+	signIn,
 };

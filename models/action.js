@@ -18,6 +18,9 @@ const actionSchema = Schema({
 		type: String,
 		required: true,
 	},
+	description: {
+		type: [String],
+	},
 	result: {
 		type: String,
 		required: true,

@@ -3,7 +3,7 @@ const path = require("path");
 const dbConnect = require("./dbConnect/mongoConnect");
 const passport = require("passport");
 
-const routes = require("./routes/index");
+const history = require("./routes/history");
 const users = require("./routes/users");
 const operations = require("./routes/operations");
 const app = express();
@@ -14,12 +14,13 @@ app.use(passport.initialize());
 require("./passport/index")(passport);
 app.use(express.json());
 app.use(express.urlencoded());
-
-app.use(express.static(path.join(__dirname, "public")));
-
-app.use("/", routes);
-app.use("/users", users);
+app.get("/favicon.ico", (req, res) => {
+	console.log("got to server");
+	res.send("favicon placeholder");
+});
 app.use("/operations", operations);
+app.use("/history", history);
+app.use("/users", users);
 
 app.use(function(req, res, next) {
 	var err = new Error("Not Found");
@@ -29,20 +30,12 @@ app.use(function(req, res, next) {
 
 if (app.get("env") === "development") {
 	app.use(function(err, req, res, next) {
-		res.status(err.status || 500);
-		res.render("error", {
-			message: err.message,
-			error: err,
-		});
+		res.json({ err });
 	});
 }
 
 app.use(function(err, req, res, next) {
-	res.status(err.status || 500);
-	res.render("error", {
-		message: err.message,
-		error: {},
-	});
+	res.json({ err });
 });
 
 module.exports = app;
