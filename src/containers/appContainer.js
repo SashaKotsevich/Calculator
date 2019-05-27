@@ -1,15 +1,14 @@
 import App from "../components/App";
 import { connect } from "react-redux";
-import {
-	switchSideBar,
-	changeOutputNymSys,
-} from "../actions/applicationActions";
+import { switchSideBar, switchTab } from "../actions/applicationActions";
+import { myData } from "../actions/userActions";
 
 const mapStateToProps = state => ({
 	application: state.application,
+	user: state.user.username,
 });
 
 export default connect(
 	mapStateToProps,
-	{ switchSideBar, changeOutputNymSys }
+	{ switchTab, switchSideBar, myData }
 )(App);

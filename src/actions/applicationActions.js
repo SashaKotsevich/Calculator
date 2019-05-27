@@ -5,7 +5,7 @@ export function switchSideBar() {
 		});
 	};
 }
-export function changeOutputNymSys(value) {
+export function switchTab(value) {
 	return dispatch => {
 		dispatch({
 			type: "CHANGE_TAB",

@@ -6,11 +6,11 @@ class Sidebar extends Component {
 	render() {
 		return (
 			<aside className={styles.sidebar}>
+				<BurgerButton
+					action={this.props.switchSideBar}
+					state={this.props.application.isSideBar}
+				/>
 				<ul className={styles.link_container}>
-					<BurgerButton
-						action={this.props.switchSideBar}
-						state={this.props.application.isSideBar}
-					/>
 					<Link
 						to="/standart"
 						className={styles.link}
@@ -32,6 +32,33 @@ class Sidebar extends Component {
 					>
 						History
 					</Link>
+					{!this.props.user && (
+						<Link
+							to="/signup"
+							className={styles.link}
+							onClick={this.props.switchSideBar}
+						>
+							SignUp
+						</Link>
+					)}
+					{!this.props.user && (
+						<Link
+							to="/signin"
+							className={styles.link}
+							onClick={this.props.switchSideBar}
+						>
+							SignIn
+						</Link>
+					)}
+					{this.props.user && (
+						<Link
+							to="/standart"
+							className={styles.link}
+							onClick={this.props.logout}
+						>
+							LogOut
+						</Link>
+					)}
 				</ul>
 			</aside>
 		);

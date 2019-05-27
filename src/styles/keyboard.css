@@ -2,6 +2,12 @@
   display: flex;
   justify-content: space-between;
   flex-flow: row wrap;
-  margin: 5px;
+  padding: 5px;
   opacity: 1;
+  height: 75%;
+}
+.check_wrapper{
+  display:flex;
+  justify-content: flex-end;
+  font-size: 13px;
 }

@@ -1,13 +1,16 @@
 .text_field{
-  margin:3px;
-  height:60px;
+  height:8%;
   border: none;
   background-color: rgba(0, 0, 0, 0 );
   text-align: end;
   padding: 15px;
   font-family: 'Roboto', sans-serif;
-  font-size: 38px;
+  font-size: 40px;
   color: #ffffff;
-  
-}
+  overflow: hidden;
+  cursor: pointer;
+  resize: none;
+  outline: none;
+  -moz-appearance: none;
+ }
 

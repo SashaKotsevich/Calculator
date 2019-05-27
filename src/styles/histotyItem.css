@@ -1,16 +1,17 @@
 .item_wrapper{
-  background: rgba(40, 40, 40, 0.5);
+  background: rgba(42, 42, 42, 0.9);
   display: flex;
   flex-flow: row nowrap;
   align-items: space-between;
-  padding: 4px;
-  margin-top:2px;
+  margin: 2% 12px 1% 0;
+  box-shadow: 0 0 3px 0  #101010;
+  height: 15%;
 }
-.description{
+.parameters{
   display: flex;
   flex-flow: column nowrap;
   width: 100%;
-  justify-content: space-between;
+  justify-content: flex-start;
   
 }
 .result{
@@ -29,3 +30,28 @@
 label{
   color: #fff
 }
+.item_wrapper_unfolded{
+  composes:item_wrapper;
+  height: 35%;
+}
+.top_wrapper{
+  display: flex;
+  justify-content: space-between;
+
+}
+.unfold_icon{
+  width: 20px;
+  height: 20px;
+}
+.unfold_icon_rotated{
+  composes:unfold_icon;
+  transform: rotate(180deg);
+}
+.description{
+  height: 19%;
+  padding-top:10px;
+  overflow: hidden;
+  }
+  .description_item{
+        display: block
+  }

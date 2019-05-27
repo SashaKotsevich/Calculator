@@ -9,12 +9,19 @@ class Convert extends Component {
 		event.preventDefault();
 		this.props.switchImputAndOutputNymSys();
 	};
+	handleSubmit = event => {
+		event.preventDefault();
+		event.stopPropagation();
+		event.persist();
+		this.props.convert();
+	};
 	render() {
+		console.log(this.props.convert);
 		return (
 			<div className={styles.convert_panel}>
 				<nav className={styles.options_panel}>
 					<Select
-						value={this.props.convert.inputNumSys}
+						value={this.props.convertState.initialSys}
 						changeNymSys={this.props.changeIputNymSys}
 					/>
 					<img
@@ -24,12 +31,16 @@ class Convert extends Component {
 						onClick={this.handleSwitchClick}
 					/>
 					<Select
-						value={this.props.convert.outputNumSys}
+						value={this.props.convertState.targetSys}
 						changeNymSys={this.props.changeOutputNymSys}
 					/>
 				</nav>
-				<ConvertTextField />
-				<ConvertTextField />
+				<ConvertTextField
+					value={this.props.convertState.value}
+					action={this.props.changeValue}
+				/>
+				<ConvertTextField value={this.props.convertState.result} />
+				<button onClick={this.handleSubmit}>convert</button>
 			</div>
 		);
 	}

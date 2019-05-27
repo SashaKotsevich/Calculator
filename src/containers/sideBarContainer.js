@@ -1,15 +1,14 @@
 import SideBar from "../components/Sidebar";
 import { connect } from "react-redux";
-import {
-	switchSideBar,
-	changeOutputNymSys,
-} from "../actions/applicationActions";
+import { switchSideBar, switchTab } from "../actions/applicationActions";
+import { logout } from "../actions/userActions";
 
 const mapStateToProps = state => ({
 	application: state.application,
+	user: state.user.username,
 });
 
 export default connect(
 	mapStateToProps,
-	{ switchSideBar, changeOutputNymSys }
+	{ switchSideBar, switchTab, logout }
 )(SideBar);

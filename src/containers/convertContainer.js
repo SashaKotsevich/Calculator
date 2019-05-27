@@ -4,13 +4,21 @@ import {
 	changeIputNymSys,
 	changeOutputNymSys,
 	switchImputAndOutputNymSys,
+	convert,
+	changeValue,
 } from "../actions/convertActions";
 
 const mapStateToProps = state => ({
-	convert: state.convert,
+	convertState: state.convert,
 });
 
 export default connect(
 	mapStateToProps,
-	{ changeIputNymSys, changeOutputNymSys, switchImputAndOutputNymSys }
+	{
+		changeIputNymSys,
+		changeOutputNymSys,
+		switchImputAndOutputNymSys,
+		convert,
+		changeValue,
+	}
 )(Convert);

@@ -3,14 +3,20 @@
   width: 100vw;
   height:100vh;
   display: flex;
+  font-family: 'Roboto', sans-serif;
   }
 
 .app_wrapper{
   background: radial-gradient(circle 200px,rgba(80,80,80,0.7),rgba(50,50,60,0.8));
-  width: 330px;
-  height: 440px;
+  min-width: 320px;
+  min-height: 480px;
+  width: 25vw;
+  height: 34vw;
   margin: auto;
   display: flex;
   flex-flow: column nowrap;
   justify-content: flex-start;
+  box-shadow: 0 0 5px 0  #101010;
+  border: none;
+  position: relative
    }

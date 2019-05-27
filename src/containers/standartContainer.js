@@ -1,10 +1,11 @@
 import Standart from "../components/Standart";
 import { connect } from "react-redux";
-import { addChar, removeChar } from "../actions/standartActions";
 import {
-	switchSideBar,
-	changeOutputNymSys,
-} from "../actions/applicationActions";
+	addChar,
+	removeChar,
+	switchDesSideBar,
+} from "../actions/standartActions";
+import { switchSideBar, switchTab } from "../actions/applicationActions";
 
 const mapStateToProps = state => ({
 	standart: state.standart,
@@ -13,5 +14,5 @@ const mapStateToProps = state => ({
 
 export default connect(
 	mapStateToProps,
-	{ addChar, removeChar, switchSideBar, changeOutputNymSys }
+	{ addChar, removeChar, switchSideBar, switchTab, switchDesSideBar }
 )(Standart);

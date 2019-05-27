@@ -1,6 +1,13 @@
 import Keyboard from "../components/Keyboard";
 import { connect } from "react-redux";
-import { addChar, removeChar } from "../actions/standartActions";
+import {
+	addChar,
+	removeChar,
+	removeAll,
+	swithSign,
+	calculate,
+} from "../actions/standartActions";
+import { switchDesSideBar } from "../actions/standartActions";
 
 const mapStateToProps = state => ({
 	standart: state.standart,
@@ -8,5 +15,5 @@ const mapStateToProps = state => ({
 
 export default connect(
 	mapStateToProps,
-	{ addChar, removeChar }
+	{ addChar, removeChar, removeAll, swithSign, calculate, switchDesSideBar }
 )(Keyboard);
