@@ -1,9 +1,11 @@
 import React, { Component } from "react";
+import { Scrollbars } from "react-custom-scrollbars";
+
 import HistoryItem from "./HistoryItem";
 import DescriptionSideBar from "./DescriptionSideBar";
 import DateFilterPanel from "../containers/dateFilterPanelContainer";
+
 import styles from "../styles/history.css";
-import { Scrollbars } from "react-custom-scrollbars";
 
 class History extends Component {
 	componentDidMount() {

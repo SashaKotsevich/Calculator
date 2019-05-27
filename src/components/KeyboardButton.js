@@ -1,24 +1,24 @@
 import React from "react";
+
 import styles from "../styles/keyboardButton.css";
 
-class KeyboardButton extends React.Component {
-	handleClick = event => {
+function KeyboardButton(props) {
+	const handleClick = event => {
 		event.preventDefault();
-		this.props.action(this.props.char);
+		props.action(props.char);
 	};
-	render() {
-		return (
-			<button
-				className={
-					typeof this.props.char === "number"
-						? styles.wrapper_number
-						: styles.wrapper
-				}
-				onClick={this.handleClick}
-			>
-				<label className={styles.char}>{this.props.char}</label>
-			</button>
-		);
-	}
+	const { char } = props;
+
+	return (
+		<button
+			className={
+				typeof char === "number" ? styles.wrapper_number : styles.wrapper
+			}
+			onClick={handleClick}
+		>
+			<label className={styles.char}>{char}</label>
+		</button>
+	);
 }
+
 export default KeyboardButton;

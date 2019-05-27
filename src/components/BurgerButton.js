@@ -1,22 +1,22 @@
-import React, { Component } from "react";
+import React from "react";
+
 import styles from "../styles/burgerButton.css";
-class BurgerButton extends Component {
-	handleClick = event => {
+
+function BurgerButton(props) {
+	const handleClick = event => {
 		event.preventDefault();
-		this.props.action();
+		props.action();
 	};
-	render() {
-		return (
-			<img
-				src="/images/burger_menu_icon.png"
-				alt="no icon"
-				className={
-					this.props.state ? styles.button_clicked : styles.button_standart
-				}
-				onClick={this.handleClick}
-			/>
-		);
-	}
+	const { state } = props.state;
+
+	return (
+		<img
+			src="/images/burger_menu_icon.png"
+			alt="no icon"
+			className={state ? styles.button_clicked : styles.button}
+			onClick={handleClick}
+		/>
+	);
 }
 
 export default BurgerButton;

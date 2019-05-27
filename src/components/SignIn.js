@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import styles from "../styles/authForm.css";
 import { Redirect } from "react-router";
+
+import styles from "../styles/authForm.css";
 
 class Standart extends Component {
 	state = {

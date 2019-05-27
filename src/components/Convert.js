@@ -1,53 +1,43 @@
-import React, { Component } from "react";
-import ConvertTextField from "./ConvertTextField";
+import React from "react";
 
+import ConvertTextField from "./ConvertTextField";
 import Select from "./Select";
+
 import styles from "../styles/convert.css";
 
-class Convert extends Component {
-	handleSwitchClick = event => {
+function Convert(props) {
+	const handleSwitchClick = event => {
 		event.preventDefault();
-		this.props.switchImputAndOutputNymSys();
+		props.switchImputAndOutputNymSys();
 	};
-	handleSubmit = event => {
+	const handleSubmit = event => {
 		event.preventDefault();
 		event.stopPropagation();
 		event.persist();
-		this.props.convert();
+		props.convert();
 	};
-	render() {
-		return (
-			<div className={styles.convert_panel}>
-				<nav className={styles.options_panel}>
-					<Select
-						value={this.props.convertState.initialSys}
-						changeNymSys={this.props.changeIputNymSys}
-					/>
-					<img
-						src="/images/reverse_icon.png"
-						alt="err"
-						className={styles.reverse_icon}
-						onClick={this.handleSwitchClick}
-					/>
-					<Select
-						value={this.props.convertState.targetSys}
-						changeNymSys={this.props.changeOutputNymSys}
-					/>
-				</nav>
-				<ConvertTextField
-					value={this.props.convertState.value}
-					valid={this.props.convertState.valid}
-					action={this.props.changeValue}
+	const { initialSys, targetSys, value, valid, result } = props.convertState;
+	const { changeIputNymSys, changeOutputNymSys, changeValue } = props;
+
+	return (
+		<div className={styles.convert_panel}>
+			<nav className={styles.options_panel}>
+				<Select value={initialSys} changeNymSys={changeIputNymSys} />
+				<img
+					src="/images/reverse_icon.png"
+					alt="err"
+					className={styles.reverse_icon}
+					onClick={handleSwitchClick}
 				/>
-				<ConvertTextField
-					value={this.props.convertState.result}
-					action={() => {}}
-					valid={true}
-				/>
-				<button onClick={this.handleSubmit}>convert</button>
-			</div>
-		);
-	}
+				<Select value={targetSys} changeNymSys={changeOutputNymSys} />
+			</nav>
+			<ConvertTextField value={value} valid={valid} action={changeValue} />
+			<ConvertTextField value={result} action={() => {}} valid={true} />
+			<button onClick={handleSubmit} className={styles.submit}>
+				convert
+			</button>
+		</div>
+	);
 }
 
 export default Convert;

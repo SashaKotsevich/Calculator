@@ -1,19 +1,18 @@
 .text_field{
   height:8%;
-  border: none;
-  background-color: rgba(0, 0, 0, 0 );
-  text-align: end;
   padding: 15px;
-  font-family: 'Roboto', sans-serif;
-  font-size: 40px;
-  color: #ffffff;
+  border: none;
   overflow: hidden;
   cursor: pointer;
   resize: none;
   outline: none;
+  text-align: end;
+  font-size: 40px;
+  font-family: 'Roboto', sans-serif;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0 );
   -moz-appearance: none;
-
- }
+}
  .unvalid_text_field{
   composes:text_field;
   color:#ff0404

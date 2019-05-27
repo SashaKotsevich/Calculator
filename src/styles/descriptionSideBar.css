@@ -1,14 +1,14 @@
 .wrapper{
-  bottom: 0;
   position: absolute;
-  height: 92%;
-  width: 100%;
-  background:#202020;
-  color:white;
+  bottom: 0;
   display:flex;
   justify-content: flex-start;
   flex-flow: column nowrap;
+  height: 92%;
+  width: 100%;
   font-family: 'Roboto', sans-serif;
+  color:white;
+  background:#202020;
 }
 .parameters{
   display: flex;
@@ -18,23 +18,23 @@
   border-bottom: 0.5px solid #fff;
 }
 .icon{
-  align-self: flex-end;
   height: 20px;
   width: 20px;
   margin:8px 6px;
+  align-self: flex-end;
 }
 .description_item{
-   padding: 10px;
-   display: block
+  display: block;
+  padding: 10px;
 }
 .expression_text{
-  background-color: rgba(0, 0, 0, 0 );
   height: 15px;
-  resize: none;
-  border: none;
   width: auto;
+  margin-bottom:-4px; 
+  border: none;
+  resize: none;
   overflow: hidden;
   color: #fff;
-   margin-bottom:-4px; 
+  background-color: rgba(0, 0, 0, 0 );
 }
 

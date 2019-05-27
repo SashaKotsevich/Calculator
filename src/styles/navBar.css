@@ -1,8 +1,8 @@
 .nav_wrapper{
   display: flex;
   justify-content: space-between;
-  width: 100%;
   height: 7%;
+  width: 100%;
   margin-bottom: 1%
  }
 .icon{

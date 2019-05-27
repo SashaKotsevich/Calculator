@@ -2,9 +2,8 @@
   display: flex;
   justify-content: space-between;
   flex-flow: row wrap;
-  padding: 5px;
-  opacity: 1;
   height: 75%;
+  padding: 5px;
 }
 .check_wrapper{
   display:flex;

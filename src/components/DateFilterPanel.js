@@ -1,27 +1,29 @@
-import React, { Component } from "react";
+import React from "react";
+
 import styles from "../styles/dateFilterPanel.css";
-class DateFilterPanel extends Component {
-	handleStartDateChange = event => {
+
+function DateFilterPanel(props) {
+	const handleStartDateChange = event => {
 		event.preventDefault();
 		let date = event.target.value;
-		date = this.dateValidate(date, 1);
-		this.props.changeStartDate(date);
+		date = dateValidate(date, 1);
+		props.changeStartDate(date);
 	};
-	handleEndDateChange = event => {
+	const handleEndDateChange = event => {
 		event.preventDefault();
 		let date = event.target.value;
-		date = this.dateValidate(date, 2);
-		this.props.changeEndDate(date);
+		date = dateValidate(date, 2);
+		props.changeEndDate(date);
 	};
-	convertDateToString = date => {
+	const convertDateToString = date => {
 		return date
 			.toLocaleDateString()
 			.split(".")
 			.reverse()
 			.join("-");
 	};
-	dateValidate = (date, type) => {
-		const { startDate, endDate } = this.props.history;
+	const dateValidate = (date, type) => {
+		const { startDate, endDate } = props.history;
 		date = new Date(date);
 		switch (type) {
 			case 1:
@@ -31,42 +33,38 @@ class DateFilterPanel extends Component {
 			default:
 		}
 	};
-	render() {
-		const { startDate, endDate, dateFilter } = this.props.history;
-		console.log(startDate, endDate);
-		return (
-			<section
-				className={!dateFilter ? styles.wrapper : styles.wrapper_unfolded}
-			>
-				<section className={styles.navPanel}>
-					<label>Date</label>
-					<img
-						src="/images/unfold_icon.png"
-						alt="no icon"
-						className={!dateFilter ? styles.icon : styles.icon_rotated}
-						onClick={() => {
-							this.props.switchDateFilter();
-						}}
-					/>
-				</section>
+	const { startDate, endDate, dateFilter } = props.history;
 
-				<section className={styles.date_part}>
-					<input
-						type="date"
-						value={this.convertDateToString(startDate)}
-						onChange={this.handleStartDateChange}
-						className={dateFilter ? styles.date : styles.date_off}
-					/>
-					<input
-						type="date"
-						value={this.convertDateToString(endDate)}
-						className={dateFilter ? styles.date : styles.date_off}
-						onChange={this.handleEndDateChange}
-					/>
-				</section>
+	return (
+		<section className={!dateFilter ? styles.wrapper : styles.wrapper_unfolded}>
+			<section className={styles.navPanel}>
+				<label>Date</label>
+				<img
+					src="/images/unfold_icon.png"
+					alt="no icon"
+					className={!dateFilter ? styles.icon : styles.icon_rotated}
+					onClick={() => {
+						props.switchDateFilter();
+					}}
+				/>
 			</section>
-		);
-	}
+
+			<section className={styles.date_part}>
+				<input
+					type="date"
+					value={convertDateToString(startDate)}
+					onChange={handleStartDateChange}
+					className={dateFilter ? styles.date : styles.date_off}
+				/>
+				<input
+					type="date"
+					value={convertDateToString(endDate)}
+					className={dateFilter ? styles.date : styles.date_off}
+					onChange={handleEndDateChange}
+				/>
+			</section>
+		</section>
+	);
 }
 
 export default DateFilterPanel;

@@ -1,8 +1,9 @@
-import React, { Component } from "react";
-import styles from "../styles/histotyItem.css";
+import React from "react";
 
-class HistoryItem extends Component {
-	typeToSrc = type => {
+import styles from "../styles/historyItem.css";
+
+function HistoryItem(props) {
+	const typeToSrc = type => {
 		switch (type) {
 			case "Calculate":
 				return "/images/expression_icon.png";
@@ -13,26 +14,22 @@ class HistoryItem extends Component {
 		}
 	};
 
-	handleItemClick = event => {
+	const handleItemClick = event => {
 		event.preventDefault();
-		this.props.action(this.props.data);
+		props.action(props.data);
 	};
-	render() {
-		return (
-			<section className={styles.item_wrapper} onClick={this.handleItemClick}>
-				<img
-					className={styles.type}
-					src={this.typeToSrc(this.props.data.type)}
-					alt="err"
-				/>
-				<section className={styles.parameters}>
-					<label className={styles.date}>Date: {this.props.data.date}</label>
-					<label>{this.props.data.expression}</label>
-					<label className={styles.result}>= {this.props.data.result}</label>
-				</section>
+
+	const { date, result, expression, type } = props.data;
+	return (
+		<section className={styles.item_wrapper} onClick={handleItemClick}>
+			<img className={styles.type} src={typeToSrc(type)} alt="err" />
+			<section className={styles.parameters}>
+				<label className={styles.date}>Date: {date}</label>
+				<label>{expression}</label>
+				<label className={styles.result}>= {result}</label>
 			</section>
-		);
-	}
+		</section>
+	);
 }
 
 export default HistoryItem;
