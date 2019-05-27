@@ -1,9 +1,9 @@
 .dropdown{
   background:rgba(80, 80, 80, 1) ;
   border: none;
-  margin: 0 10px;
+  margin: 0 8px;
   outline: none;
-  padding: 4px;
+  padding: 4px 2px;
   color: #fff;
   font-size: 18px;
   

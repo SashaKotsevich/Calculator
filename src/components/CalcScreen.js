@@ -4,25 +4,31 @@ import styles from "../styles/calcScreen.css";
 class CalcScreen extends Component {
 	constructor(props) {
 		super(props);
-		this.myRef = React.createRef();
+		this.text1 = React.createRef();
+		this.text2 = React.createRef();
 	}
 	componentDidUpdate() {
-		this.myRef.current.scrollLeft = this.myRef.current.scrollWidth;
+		this.text1.current.scrollLeft = this.text1.current.scrollWidth;
+		this.text2.current.scrollLeft = this.text2.current.scrollWidth;
 	}
 	render() {
+		const { value, result, valid } = this.props;
 		return (
 			<>
 				<textarea
-					ref={this.myRef}
+					ref={this.text1}
 					wrap="off"
-					className={styles.text_field}
-					value={this.props.value}
+					readOnly
+					className={valid ? styles.text_field : styles.unvalid_text_field}
+					value={value}
 					onChange={() => {}}
 				/>
 				<textarea
+					ref={this.text2}
 					wrap="off"
+					readOnly
 					className={styles.text_field}
-					value={this.props.result}
+					value={result}
 					onChange={() => {}}
 				/>
 			</>

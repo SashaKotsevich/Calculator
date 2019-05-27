@@ -7,5 +7,9 @@
   resize: none;
   overflow: hidden;
   color: #fff;
-
+  box-shadow: 0 0 3px 0  #101010;
+}
+.unvalid_text_field{
+  composes:text_field;
+  box-shadow: 0 0 5px 0  #f80202;
 }

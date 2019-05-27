@@ -1,26 +1,33 @@
 import service from "../services/signSwitch";
 import { calculateRequest } from "../services/apiCall";
-
+import { Expression } from "../services/validator";
 export function calculate() {
 	return (dispatch, getState) => {
 		const { expression } = getState().standart;
 		const { token } = getState().user;
+		const valid = Expression(expression);
 		dispatch({
-			type: "CALCULATE_REQUEST",
+			type: "SWITCH_VALID",
+			payload: valid,
 		});
-		return calculateRequest(expression, token)
-			.then(result =>
-				dispatch({
-					type: "CALCULATE_SUCCESS",
-					payload: result.data,
-				})
-			)
-			.catch(reason =>
-				dispatch({
-					type: "CALCULATE_FAILURE",
-					payload: reason,
-				})
-			);
+		if (valid) {
+			dispatch({
+				type: "CALCULATE_REQUEST",
+			});
+			return calculateRequest(expression, token)
+				.then(result =>
+					dispatch({
+						type: "CALCULATE_SUCCESS",
+						payload: result.data,
+					})
+				)
+				.catch(reason =>
+					dispatch({
+						type: "CALCULATE_FAILURE",
+						payload: reason,
+					})
+				);
+		}
 	};
 }
 
@@ -60,4 +67,7 @@ export function switchDesSideBar() {
 			type: "SWITCH_DESSIDEBAR",
 		});
 	};
+}
+export function validateExpression(value) {
+	return dispatch => {};
 }

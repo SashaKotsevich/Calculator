@@ -1,26 +1,34 @@
 import { convertRequest } from "../services/apiCall";
+import { Num } from "../services/validator";
 
 export function convert() {
 	return (dispatch, getState) => {
 		const { initialSys, targetSys, value } = getState().convert;
 		const { token } = getState().user;
-
+		const valid = Num(value, initialSys);
 		dispatch({
-			type: "CONVERT_REQUEST",
+			type: "SWITCH_VALID",
+			payload: valid,
 		});
-		return convertRequest(initialSys, targetSys, value, token)
-			.then(result => {
-				dispatch({
-					type: "CONVERT_SUCCESS",
-					payload: result.data,
-				});
-			})
-			.catch(reason =>
-				dispatch({
-					type: "CONVERT_FAILURE",
-					payload: reason,
+
+		if (valid) {
+			dispatch({
+				type: "CONVERT_REQUEST",
+			});
+			return convertRequest(initialSys, targetSys, value, token)
+				.then(result => {
+					dispatch({
+						type: "CONVERT_SUCCESS",
+						payload: result.data,
+					});
 				})
-			);
+				.catch(reason =>
+					dispatch({
+						type: "CONVERT_FAILURE",
+						payload: reason,
+					})
+				);
+		}
 	};
 }
 export function changeValue(value) {

@@ -5,13 +5,10 @@ import DescriptionSideBar from "./DescriptionSideBar";
 
 class Standart extends Component {
 	render() {
-		const { desSideBar } = this.props.standart;
+		const { desSideBar, expression, result, valid } = this.props.standart;
 		return (
 			<>
-				<CalcScreen
-					value={this.props.standart.expression}
-					result={this.props.standart.result}
-				/>
+				<CalcScreen value={expression} result={result} valid={valid} />
 				<Keyboard />
 				{desSideBar && (
 					<DescriptionSideBar

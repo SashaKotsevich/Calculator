@@ -16,7 +16,6 @@ class Convert extends Component {
 		this.props.convert();
 	};
 	render() {
-		console.log(this.props.convert);
 		return (
 			<div className={styles.convert_panel}>
 				<nav className={styles.options_panel}>
@@ -37,9 +36,14 @@ class Convert extends Component {
 				</nav>
 				<ConvertTextField
 					value={this.props.convertState.value}
+					valid={this.props.convertState.valid}
 					action={this.props.changeValue}
 				/>
-				<ConvertTextField value={this.props.convertState.result} />
+				<ConvertTextField
+					value={this.props.convertState.result}
+					action={() => {}}
+					valid={true}
+				/>
 				<button onClick={this.handleSubmit}>convert</button>
 			</div>
 		);

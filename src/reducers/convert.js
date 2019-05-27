@@ -4,6 +4,7 @@ const initialState = {
 	value: "",
 	result: "",
 	description: "",
+	valid: true,
 };
 
 export default function(state = initialState, action) {
@@ -36,7 +37,6 @@ export default function(state = initialState, action) {
 			return state;
 
 		case "CONVERT_SUCCESS":
-			console.log(action.payload);
 			return {
 				...state,
 				result: action.payload.value,
@@ -45,6 +45,9 @@ export default function(state = initialState, action) {
 
 		case "CONVERT_FAILURE":
 			return state;
+
+		case "SWITCH_VALID":
+			return { ...state, valid: action.payload };
 
 		default:
 			return state;

@@ -12,13 +12,15 @@ class NavBar extends Component {
 					state={this.props.application.isSideBar}
 				/>
 				<section>
-					<Link to={this.props.user ? "/profile" : "/signin"}>
-						<img
-							src="/images/signin_icon.png"
-							alt="no icon"
-							className={styles.icon}
-						/>
-					</Link>
+					{!this.props.user && (
+						<Link to="/signin">
+							<img
+								src="/images/signin_icon.png"
+								alt="no icon"
+								className={styles.icon}
+							/>
+						</Link>
+					)}
 					{!this.props.user && (
 						<Link to="/signup">
 							<img

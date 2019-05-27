@@ -29,7 +29,6 @@ export function signIn(email, password) {
 		});
 		return loginRequest(email, password)
 			.then(result => {
-				console.log(result.data);
 				localStorage.setItem("token", result.data.token);
 				dispatch({
 					type: "SIGNIN_SUCCESS",

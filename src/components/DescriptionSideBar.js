@@ -25,12 +25,12 @@ class DescriptionSideBar extends Component {
 							className={styles.expression_text}
 							wrap="off"
 							value={expression}
-							readonly
+							readOnly
 						/>
 					</label>
 					<label className={styles.result}>Result: {result}</label>
 				</section>
-				{console.log(this.props.data)}
+
 				<Scrollbars>
 					{description.map((item, index) => (
 						<label key={index} className={styles.description_item}>

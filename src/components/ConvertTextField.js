@@ -6,10 +6,11 @@ class ConvertTextField extends Component {
 		this.props.action(event.target.value);
 	};
 	render() {
+		const { value, valid } = this.props;
 		return (
 			<textarea
-				className={styles.text_field}
-				value={this.props.value}
+				className={valid ? styles.text_field : styles.unvalid_text_field}
+				value={value}
 				onChange={this.handleChange}
 			/>
 		);

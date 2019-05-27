@@ -1,5 +1,7 @@
 import React, { Component } from "react";
-import styles from "../styles/signIn.css";
+import styles from "../styles/authForm.css";
+import { Redirect } from "react-router";
+
 class Standart extends Component {
 	state = {
 		email: "",
@@ -18,23 +20,28 @@ class Standart extends Component {
 		this.props.signIn(this.state.email, this.state.password);
 	};
 	render() {
+		const { username } = this.props.user;
 		return (
 			<form className={styles.wrapper} onSubmit={this.handleSubmit}>
-				<label>email</label>
 				<input
-					type="text"
+					type="email"
 					value={this.state.email}
 					onChange={this.handleEmailChange}
 					required
+					placeholder="Email"
+					className={styles.field}
 				/>
-				<label>password</label>
+
 				<input
-					type="text"
+					type="password"
 					value={this.state.password}
 					onChange={this.handlePasswordChange}
 					required
+					placeholder="Password"
+					className={styles.field}
 				/>
-				<input type="submit" />
+				<input type="submit" value="submit" className={styles.submit} />
+				{username && <Redirect to="/standart" />}
 			</form>
 		);
 	}

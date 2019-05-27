@@ -15,5 +15,12 @@ const mapStateToProps = state => ({
 
 export default connect(
 	mapStateToProps,
-	{ addChar, removeChar, removeAll, swithSign, calculate, switchDesSideBar }
+	{
+		addChar,
+		removeChar,
+		removeAll,
+		swithSign,
+		calculate,
+		switchDesSideBar,
+	}
 )(Keyboard);

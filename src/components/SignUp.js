@@ -1,5 +1,7 @@
 import React, { Component } from "react";
-import styles from "../styles/signUp.css";
+import styles from "../styles/authForm.css";
+import { Redirect } from "react-router";
+
 class Standart extends Component {
 	state = {
 		name: "",
@@ -21,15 +23,13 @@ class Standart extends Component {
 	};
 
 	handleRepeatPasswordChange = event => {
-		console.log(1);
 		if (event.target.value === this.state.password) {
-			event.target.className = styles.fieldNormal;
+			event.target.className = styles.field;
 			this.setState({ passwordsMatch: true });
 		} else {
-			event.target.className = styles.fieldError;
+			event.target.className = styles.unvalid_field;
 			this.setState({ passwordsMatch: false });
 		}
-		console.log(event.target.className);
 	};
 
 	handleSubmit = event => {
@@ -37,37 +37,50 @@ class Standart extends Component {
 		this.props.signUp(this.state.name, this.state.email, this.state.password);
 	};
 	render() {
+		const { username } = this.props.user;
 		return (
 			<form className={styles.wrapper} onSubmit={this.handleSubmit}>
-				<label>name</label>
 				<input
 					type="text"
 					value={this.state.name}
 					onChange={this.handleNameChange}
 					required
+					placeholder="Name"
+					className={styles.field}
 				/>
-				<label>email</label>
+
 				<input
-					type="text"
+					type="email"
 					value={this.state.email}
 					onChange={this.handleEmailChange}
 					required
+					placeholder="Email"
+					className={styles.field}
 				/>
-				<label>password</label>
+
 				<input
-					type="text"
+					type="password"
 					value={this.state.password}
 					onChange={this.handlePasswordChange}
 					required
+					placeholder="Password"
+					className={styles.field}
 				/>
-				<label>repeat password</label>
+
 				<input
-					type="text"
+					type="password"
 					onChange={this.handleRepeatPasswordChange}
-					className={styles.fieldNormal}
 					required
+					placeholder="Repeat Password"
+					className={styles.field}
 				/>
-				<input type="submit" disabled={!this.state.passwordsMatch} />
+				<input
+					type="submit"
+					value="submit"
+					disabled={!this.state.passwordsMatch}
+					className={styles.submit}
+				/>
+				{username && <Redirect to="/standart" />}
 			</form>
 		);
 	}

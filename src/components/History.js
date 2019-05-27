@@ -32,7 +32,9 @@ class History extends Component {
 		return (
 			<>
 				{!this.props.user && (
-					<label>To view the history you need to SignIn</label>
+					<label className={styles.message}>
+						To view the history you need to SignIn
+					</label>
 				)}
 				{this.props.user && (
 					<>
