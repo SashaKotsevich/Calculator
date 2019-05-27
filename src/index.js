@@ -6,10 +6,10 @@ import store from "./store/store";
 import * as serviceWorker from "./serviceWorker";
 
 ReactDOM.render(
-	<Provider store={store}>
-		<App />
-	</Provider>,
-	document.getElementById("root")
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById("root")
 );
 
 serviceWorker.unregister();

@@ -5,9 +5,9 @@ import application from "./application";
 import user from "./user";
 import history from "./history";
 export default combineReducers({
-	application,
-	standart,
-	convert,
-	user,
-	history,
+  application,
+  standart,
+  convert,
+  user,
+  history,
 });

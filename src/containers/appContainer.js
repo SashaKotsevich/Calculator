@@ -4,11 +4,11 @@ import { switchSideBar, switchTab } from "../actions/applicationActions";
 import { myData } from "../actions/userActions";
 
 const mapStateToProps = state => ({
-	application: state.application,
-	user: state.user.username,
+  application: state.application,
+  user: state.user.username,
 });
 
 export default connect(
-	mapStateToProps,
-	{ switchTab, switchSideBar, myData }
+  mapStateToProps,
+  { switchTab, switchSideBar, myData }
 )(App);

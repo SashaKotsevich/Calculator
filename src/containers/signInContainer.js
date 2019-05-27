@@ -3,10 +3,10 @@ import { connect } from "react-redux";
 import { signIn } from "../actions/userActions";
 
 const mapStateToProps = state => ({
-	user: state.user,
+  user: state.user,
 });
 
 export default connect(
-	mapStateToProps,
-	{ signIn }
+  mapStateToProps,
+  { signIn }
 )(SignIn);

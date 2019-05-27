@@ -3,11 +3,11 @@ import { connect } from "react-redux";
 import { getHistory } from "../actions/historyActions";
 
 const mapStateToProps = state => ({
-	history: state.history,
-	user: state.user.username,
+  history: state.history,
+  user: state.user.username,
 });
 
 export default connect(
-	mapStateToProps,
-	{ getHistory }
+  mapStateToProps,
+  { getHistory }
 )(History);
