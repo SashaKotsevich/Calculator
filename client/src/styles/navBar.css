@@ -1,0 +1,14 @@
+.nav_wrapper{
+  display: flex;
+  justify-content: space-between;
+  height: 7%;
+  width: 100%;
+  margin-bottom: 1%
+ }
+.icon{
+  width:   25px;
+  height:  30px;
+  padding: 5px;
+}
+
+
