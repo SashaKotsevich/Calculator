@@ -34,7 +34,7 @@ export function Expression(value) {
 
   if (BracketByBracket.test(value)) return false;
 
-  if (NoSecondArgument.test(value)) return false;
+  // if (NoSecondArgument.test(value)) return false;
 
   if (value.match(OpenBracket).length !== value.match(CloseBracket).length)
     return false;
