@@ -1,0 +1,45 @@
+.wrapper{
+  height: 20px;
+  margin: 1% 0 ;
+  padding: 2%;
+  box-shadow: 0 0 5px 0  #202020;
+  background-color: rgba(40, 40, 40, 0.8 );
+}
+.wrapper_unfolded{
+  composes:wrapper;
+  height: auto;
+}
+.icon{
+  width: 20px;
+  height: 20px;
+}
+.icon_rotated{
+  composes:icon;
+  transform: rotate(180deg);
+}
+.navPanel{
+  display:flex;
+  justify-content: space-between;
+}
+.date_part{
+  display: flex;
+  justify-content: space-between;
+  margin: 1%;
+}
+.date{
+  border-radius: 3px;
+  border:0.5px solid #707070;
+  overflow: hidden;
+  outline: none;
+  color: #fff;
+  background-color: rgba(30, 30, 30, 1 );
+}
+.date_off{
+  display: none;
+}
+.date::-webkit-calendar-picker-indicator{
+  background:rgba(30, 30, 30, 1 );
+}
+.date::-webkit-inner-spin-button{
+  display: none;
+}

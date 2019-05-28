@@ -1,0 +1,10 @@
+.button{
+  width:   25px;
+  height:  30px;
+  padding: 5px;
+  margin-left:10px
+}
+.button_clicked{
+  composes:button;
+  transform: rotate(90deg);
+}
