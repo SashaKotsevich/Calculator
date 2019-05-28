@@ -1,0 +1,20 @@
+.text_field{
+  height:8%;
+  padding: 15px;
+  border: none;
+  overflow: hidden;
+  cursor: pointer;
+  resize: none;
+  outline: none;
+  text-align: end;
+  font-size: 40px;
+  font-family: 'Roboto', sans-serif;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0 );
+  -moz-appearance: none;
+}
+ .unvalid_text_field{
+  composes:text_field;
+  color:#ff0404
+ }
+
