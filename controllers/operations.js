@@ -30,7 +30,6 @@ const convertController = async (req, res) => {
 	const result = await math.convert(req.body);
 	let user = jwt.decode(req.headers.authorization.split(" ")[1]);
 	if (user) {
-		console.log("convert");
 		history.saveAction({
 			user_id: user.id,
 			type: "Convert",

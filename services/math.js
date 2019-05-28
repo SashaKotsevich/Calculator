@@ -9,7 +9,7 @@ const evaluate = str => {
 const parse = str => {
 	let unaryMinus = new RegExp(/^-[0-9]+\.[0-9]*(?=\D)|^-[0-9]+(?=$|\D)/);
 	let num = new RegExp(/^[0-9]+\.[0-9]*(?=$|\D)|^[0-9]+(?=$|\D)/);
-	let sign = new RegExp(/[\+\-\*\^\(\)\√\%\/]/);
+	let sign = new RegExp(/[\+\-\*\^\(\)\√\%\÷]/);
 	let result = [];
 	for (let i = 0; str.length != 0 && i < 1000; i++) {
 		if (
@@ -34,7 +34,7 @@ const calculate = expression => {
 	let operatorStack = [];
 	let operandStack = [];
 	const brackets = ["(", ")"];
-	const operatorsPriority = { "+": 1, "-": 1, "*": 2, "/": 2, "^": 3, "√": 4 };
+	const operatorsPriority = { "+": 1, "-": 1, "*": 2, "÷": 2, "^": 3, "√": 4 };
 	const description = [];
 
 	const operatorCaller = position => {
@@ -101,7 +101,7 @@ const calcOperator = (operator, operand2, operand1, position) => {
 		case "-":
 			result.value = operand1 - operand2;
 			break;
-		case "/":
+		case "÷":
 			result.value = operand1 / operand2;
 			break;
 		case "*":
@@ -125,7 +125,10 @@ const calcOperator = (operator, operand2, operand1, position) => {
 
 const convert = ({ initialSys, targetSys, value }) => {
 	const result = parseInt(value, initialSys).toString(targetSys);
-	return { value: result, description: `${value}->${result}` };
+	return {
+		value: result,
+		description: `(${initialSys})${value}->(${targetSys})${result}`,
+	};
 };
 
 module.exports = {
