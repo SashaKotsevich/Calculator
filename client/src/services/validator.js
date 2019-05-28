@@ -28,11 +28,8 @@ export function Num(value, sys) {
 }
 
 export function Expression(value) {
-<<<<<<< HEAD
   const OpenBrack = value.match(OpenBracket);
   const CloseBrack = value.match(CloseBracket);
-=======
->>>>>>> 4d9065e139e0c25e66360b920eb5b0c975a91bc9
   if (OperatorAbsenceReg.test(value)) {
     console.log(1);
     return false;
