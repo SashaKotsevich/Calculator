@@ -10,6 +10,7 @@ const OperatorsOneByOneReg = new RegExp(/[.+*^%÷]{2}/);
 const BracketByBracket = new RegExp(/\)\(/);
 const OpenBracket = new RegExp(/\(/, "g");
 const CloseBracket = new RegExp(/\)/, "g");
+const NoSecondArgument = new RegExp(/^[+*^%÷]|[+*^%÷]$/);
 
 export function Num(value, sys) {
   switch (+sys) {
@@ -27,25 +28,16 @@ export function Num(value, sys) {
 }
 
 export function Expression(value) {
-  if (OperatorAbsenceReg.test(value)) {
-    console.log(1);
+  if (OperatorAbsenceReg.test(value)) return false;
+
+  if (OperatorsOneByOneReg.test(value)) return false;
+
+  if (BracketByBracket.test(value)) return false;
+
+  if (NoSecondArgument.test(value)) return false;
+
+  if (value.match(OpenBracket).length !== value.match(CloseBracket).length)
     return false;
-  }
-  if (OperatorsOneByOneReg.test(value)) {
-    console.log(2);
-    return false;
-  }
-  if (BracketByBracket.test(value)) {
-    console.log(3);
-    return false;
-  }
-  if (
-    value.match(OpenBracket) &&
-    value.match(CloseBracket) &&
-    value.match(OpenBracket).length !== value.match(CloseBracket).length
-  ) {
-    console.log(4);
-    return false;
-  }
+
   return true;
 }
