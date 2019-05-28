@@ -1,8 +1,8 @@
 import fetch from "isomorphic-fetch";
 
 export function fetchMyData(token) {
-  return fetch(`http://localhost:3001/users/me`, {
-    method: "GET",
+  return fetch(`/users/me`, {
+    method: "POST",
     headers: {
       "content-type": "application/json",
       authorization: token,
@@ -18,7 +18,7 @@ export function fetchMyData(token) {
     });
 }
 export function loginRequest(email, password) {
-  return fetch(`http://localhost:3001/users/login`, {
+  return fetch(`/users/login`, {
     method: "POST",
     headers: {
       "content-type": "application/json",
@@ -36,7 +36,7 @@ export function loginRequest(email, password) {
 }
 
 export function signupRequest(name, email, password) {
-  return fetch(`http://localhost:3001/users/signup`, {
+  return fetch(`/users/signup`, {
     method: "POST",
     headers: {
       "content-type": "application/json",
@@ -54,7 +54,7 @@ export function signupRequest(name, email, password) {
 }
 
 export function calculateRequest(expression, token) {
-  return fetch(`http://localhost:3001/operations/calculate`, {
+  return fetch(`/operations/calculate`, {
     method: "POST",
     headers: {
       "content-type": "application/json",
@@ -73,7 +73,7 @@ export function calculateRequest(expression, token) {
 }
 
 export function convertRequest(initialSys, targetSys, value, token) {
-  return fetch(`http://localhost:3001/operations/convert`, {
+  return fetch(`/operations/convert`, {
     method: "POST",
     headers: {
       "content-type": "application/json",
@@ -92,9 +92,8 @@ export function convertRequest(initialSys, targetSys, value, token) {
 }
 
 export function fetchHistory(token) {
-  console.log(token);
-  return fetch(`http://localhost:3001/history`, {
-    method: "GET",
+  return fetch(`/history`, {
+    method: "POST",
     headers: {
       "content-type": "application/json",
       authorization: token,

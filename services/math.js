@@ -7,8 +7,8 @@ const evaluate = str => {
 };
 
 const parse = str => {
-	let unaryMinus = new RegExp(/^-[0-9]+\.[0-9]*(?=\D)|^-[0-9]+(?=$|\D)/);
-	let num = new RegExp(/^[0-9]+\.[0-9]*(?=$|\D)|^[0-9]+(?=$|\D)/);
+	let unaryMinus = new RegExp(/^-[0-9]*\.[0-9]*(?=\D)|^-[0-9]+(?=$|\D)/);
+	let num = new RegExp(/^[0-9]*\.[0-9]*(?=$|\D)|^[0-9]+(?=$|\D)/);
 	let sign = new RegExp(/[\+\-\*\^\(\)\√\%\÷]/);
 	let result = [];
 	for (let i = 0; str.length != 0 && i < 1000; i++) {
@@ -86,7 +86,7 @@ const calculate = expression => {
 		}
 	}
 
-	return { value: operandStack[0], description };
+	return { value: parseFloat(operandStack[0].toFixed(4)), description };
 };
 
 const calcOperator = (operator, operand2, operand1, position) => {

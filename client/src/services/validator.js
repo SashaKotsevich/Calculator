@@ -5,8 +5,8 @@ const DecimalNumReg = new RegExp(/^[0-9]+$/);
 const HexadecimalNumReg = new RegExp(/^[0-9abcdef]+$/);
 //calculate
 const OperatorAbsenceReg = new RegExp(/[0-9]\(|\)[0-9]/);
-// eslint-disable-next-line no-useless-escape
-const OperatorsOneByOneReg = new RegExp(/[\+\-\*\^\%\÷]{2}/);
+
+const OperatorsOneByOneReg = new RegExp(/[.+*^%÷]{2}/);
 const BracketByBracket = new RegExp(/\)\(/);
 const OpenBracket = new RegExp(/\(/, "g");
 const CloseBracket = new RegExp(/\)/, "g");
@@ -27,14 +27,25 @@ export function Num(value, sys) {
 }
 
 export function Expression(value) {
-  if (OperatorAbsenceReg.test(value)) return false;
-  if (OperatorsOneByOneReg.test(value)) return false;
-  if (BracketByBracket.test(value)) return false;
+  if (OperatorAbsenceReg.test(value)) {
+    console.log(1);
+    return false;
+  }
+  if (OperatorsOneByOneReg.test(value)) {
+    console.log(2);
+    return false;
+  }
+  if (BracketByBracket.test(value)) {
+    console.log(3);
+    return false;
+  }
   if (
     value.match(OpenBracket) &&
     value.match(CloseBracket) &&
-    value.match(OpenBracket).length === value.match(CloseBracket).length
-  )
+    value.match(OpenBracket).length !== value.match(CloseBracket).length
+  ) {
+    console.log(4);
     return false;
+  }
   return true;
 }

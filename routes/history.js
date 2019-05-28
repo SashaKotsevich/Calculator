@@ -4,7 +4,7 @@ const passport = require("passport");
 const autorize = passport.authenticate("jwt", { session: false });
 const history = require("../controllers/history");
 
-router.get("/", autorize, (req, res) => {
+router.post("/", autorize, (req, res) => {
 	history.getHistory(req, res);
 });
 

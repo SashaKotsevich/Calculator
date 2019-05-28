@@ -12,7 +12,7 @@ router.post("/login", (req, res) => {
 	users.signIn(req, res);
 });
 
-router.get("/me", autorize, (req, res) => {
+router.post("/me", autorize, (req, res) => {
 	users.myData(req, res);
 });
 
