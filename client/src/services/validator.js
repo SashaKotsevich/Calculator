@@ -28,16 +28,36 @@ export function Num(value, sys) {
 }
 
 export function Expression(value) {
-  if (OperatorAbsenceReg.test(value)) return false;
-
-  if (OperatorsOneByOneReg.test(value)) return false;
-
-  if (BracketByBracket.test(value)) return false;
-
-  // if (NoSecondArgument.test(value)) return false;
-
-  if (value.match(OpenBracket).length !== value.match(CloseBracket).length)
+  const OpenBrack = value.match(OpenBracket);
+  const CloseBrack = value.match(CloseBracket);
+  if (OperatorAbsenceReg.test(value)) {
+    console.log(1);
     return false;
+  }
+
+  if (OperatorsOneByOneReg.test(value)) {
+    console.log(2);
+    return false;
+  }
+
+  if (BracketByBracket.test(value)) {
+    console.log(3);
+    return false;
+  }
+
+  if (NoSecondArgument.test(value)) {
+    console.log(4);
+    return false;
+  }
+
+  if (OpenBrack && CloseBrack && OpenBrack.length !== CloseBrack.length) {
+    console.log(5);
+    return false;
+  }
+  if (!!OpenBrack !== !!CloseBrack) {
+    console.log(6);
+    return false;
+  }
 
   return true;
 }
