@@ -1,22 +1,33 @@
 import React, { Component } from "react";
-
+import { connect } from "react-redux";
+import {
+  addChar,
+  removeChar,
+  removeAll,
+  swithSign,
+  calculate,
+} from "../actions/standartActions";
 import KeyboardButton from "./KeyboardButton";
-
 import styles from "../styles/keyboard.css";
 
 class Keyboard extends Component {
-  state = { showDesc: false };
-  handleShowDescChange = event => {
-    const { checked } = event.target;
-    this.setState({ showDesc: checked });
+  state = {
+    descPanel: false,
   };
+  switchDescPanel = event => {
+    const { checked } = event.target;
+    this.setState({
+      descPanel: checked,
+    });
+  };
+
   combineActions = () => {
     this.props.calculate();
-    this.props.switchDesSideBar();
+    this.props.showDescPanel(true);
   };
 
   render() {
-    const { showDesc } = this.state;
+    const { descPanel } = this.state;
     const { addChar, removeChar, swithSign, calculate, removeAll } = this.props;
     return (
       <>
@@ -24,8 +35,8 @@ class Keyboard extends Component {
           <label>show description</label>
           <input
             type="checkbox"
-            value={showDesc}
-            onChange={this.handleShowDescChange}
+            value={descPanel}
+            onChange={this.switchDescPanel}
           />
         </section>
         <div className={styles.keyboard_wrapper}>
@@ -59,12 +70,24 @@ class Keyboard extends Component {
           <KeyboardButton char={"."} action={addChar} />
           <KeyboardButton
             char={"="}
-            action={showDesc ? this.combineActions : calculate}
+            action={descPanel ? this.combineActions : calculate}
           />
         </div>
       </>
     );
   }
 }
+const mapStateToProps = state => ({
+  standart: state.standart,
+});
 
-export default Keyboard;
+export default connect(
+  mapStateToProps,
+  {
+    addChar,
+    removeChar,
+    removeAll,
+    swithSign,
+    calculate,
+  }
+)(Keyboard);

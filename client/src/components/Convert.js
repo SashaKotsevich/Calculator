@@ -1,8 +1,14 @@
 import React from "react";
-
+import { connect } from "react-redux";
+import {
+  changeIputNymSys,
+  changeOutputNymSys,
+  switchImputAndOutputNymSys,
+  convert,
+  changeValue,
+} from "../actions/convertActions";
 import ConvertTextField from "./ConvertTextField";
 import Select from "./Select";
-
 import styles from "../styles/convert.css";
 
 function Convert(props) {
@@ -13,7 +19,6 @@ function Convert(props) {
   const handleSubmit = event => {
     event.preventDefault();
     event.stopPropagation();
-    event.persist();
     props.convert();
   };
   const { initialSys, targetSys, value, valid, result } = props.convertState;
@@ -40,4 +45,17 @@ function Convert(props) {
   );
 }
 
-export default Convert;
+const mapStateToProps = state => ({
+  convertState: state.convert,
+});
+
+export default connect(
+  mapStateToProps,
+  {
+    changeIputNymSys,
+    changeOutputNymSys,
+    switchImputAndOutputNymSys,
+    convert,
+    changeValue,
+  }
+)(Convert);

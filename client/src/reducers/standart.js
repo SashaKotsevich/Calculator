@@ -3,7 +3,6 @@ const initialState = {
   expression: "",
   result: "",
   description: [],
-  desSideBar: false,
   valid: true,
 };
 

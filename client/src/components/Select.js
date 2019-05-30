@@ -1,5 +1,4 @@
 import React from "react";
-
 import styles from "../styles/select.css";
 
 function Select(props) {

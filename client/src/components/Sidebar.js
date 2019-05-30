@@ -1,14 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
 import BurgerButton from "./BurgerButton";
-
 import styles from "../styles/sidebar.css";
 
 function Sidebar(props) {
-  const { isSideBar } = props.application;
-  const { switchSideBar, user, logout } = props;
-
+  const { switchSideBar, user, logout, isSideBar } = props;
+  console.log(user);
   return (
     <aside className={styles.sidebar}>
       <BurgerButton action={switchSideBar} state={isSideBar} />

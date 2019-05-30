@@ -1,22 +1,40 @@
-import React from "react";
+import React, { Component } from "react";
+import { connect } from "react-redux";
 
-import Keyboard from "../containers/keyboardContainer";
+import Keyboard from "./Keyboard";
 import CalcScreen from "./CalcScreen";
 import DescriptionSideBar from "./DescriptionSideBar";
 
-function Standart(props) {
-  const { desSideBar, expression, result, valid } = props.standart;
-  const { standart, switchDesSideBar } = props;
+class Standart extends Component {
+  state = {
+    descPanel: false,
+  };
+  showDescPanel = value => {
+    this.setState({ descPanel: value });
+  };
 
-  return (
-    <>
-      <CalcScreen value={expression} result={result} valid={valid} />
-      <Keyboard />
-      {desSideBar && (
-        <DescriptionSideBar data={standart} action={switchDesSideBar} />
-      )}
-    </>
-  );
+  render() {
+    const { expression, result, valid } = this.props.standart;
+    const { standart } = this.props;
+    const { descPanel } = this.state;
+    return (
+      <>
+        <CalcScreen value={expression} result={result} valid={valid} />
+        <Keyboard descPanel={descPanel} showDescPanel={this.showDescPanel} />
+        {descPanel && (
+          <DescriptionSideBar data={standart} action={this.showDescPanel} />
+        )}
+      </>
+    );
+  }
 }
 
-export default Standart;
+const mapStateToProps = state => ({
+  standart: state.standart,
+  application: state.application,
+});
+
+export default connect(
+  mapStateToProps,
+  null
+)(Standart);

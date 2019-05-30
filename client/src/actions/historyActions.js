@@ -21,13 +21,6 @@ export function getHistory() {
       );
   };
 }
-export function switchDateFilter() {
-  return dispatch => {
-    dispatch({
-      type: "SWITCH_DATEFILTER",
-    });
-  };
-}
 export function changeStartDate(date) {
   return dispatch => {
     dispatch({

@@ -61,13 +61,7 @@ export function swithSign() {
     });
   };
 }
-export function switchDesSideBar() {
-  return dispatch => {
-    dispatch({
-      type: "SWITCH_DESSIDEBAR",
-    });
-  };
-}
+
 export function validateExpression(value) {
   return dispatch => {};
 }

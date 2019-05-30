@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router";
-
+import { connect } from "react-redux";
+import { signIn } from "../actions/userActions";
 import styles from "../styles/authForm.css";
 
-class Standart extends Component {
+class SignIn extends Component {
   state = {
     email: "",
     password: "",
@@ -48,4 +49,11 @@ class Standart extends Component {
   }
 }
 
-export default Standart;
+const mapStateToProps = state => ({
+  user: state.user,
+});
+
+export default connect(
+  mapStateToProps,
+  { signIn }
+)(SignIn);

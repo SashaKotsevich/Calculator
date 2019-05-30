@@ -1,10 +1,14 @@
 import React, { Component } from "react";
 import { Scrollbars } from "react-custom-scrollbars";
-
+import { connect } from "react-redux";
+import {
+  changeStartDate,
+  changeEndDate,
+  getHistory,
+} from "../actions/historyActions";
 import HistoryItem from "./HistoryItem";
 import DescriptionSideBar from "./DescriptionSideBar";
-import DateFilterPanel from "../containers/dateFilterPanelContainer";
-
+import DateFilterPanel from "./DateFilterPanel";
 import styles from "../styles/history.css";
 
 class History extends Component {
@@ -14,13 +18,7 @@ class History extends Component {
   state = {
     sideBar: false,
     sideBarData: null,
-  };
-  convertDateToString = date => {
-    return date
-      .toLocaleDateString()
-      .split(".")
-      .reverse()
-      .join("-");
+    filter: false,
   };
 
   handleEnableSidebar = data => {
@@ -29,8 +27,16 @@ class History extends Component {
   handleDisableSidebar = () => {
     this.setState({ sideBar: false });
   };
+  handleFilterSwitch = e => {
+    this.setState(prevState => {
+      return {
+        filter: !prevState.filter,
+      };
+    });
+  };
   render() {
-    const { startDate, endDate, dateFilter } = this.props.history;
+    const { startDate, endDate } = this.props.history;
+    const { changeStartDate, changeEndDate } = this.props;
     return (
       <>
         {!this.props.user && (
@@ -40,13 +46,32 @@ class History extends Component {
         )}
         {this.props.user && (
           <>
-            <DateFilterPanel />
+            <section className={styles.navPanel}>
+              <label>Date</label>
+              <img
+                src="/images/unfold_icon.png"
+                alt="no icon"
+                className={
+                  this.state.filter ? styles.icon_rotated : styles.icon
+                }
+                onClick={this.handleFilterSwitch}
+              />
+            </section>
+
+            {this.state.filter && (
+              <DateFilterPanel
+                changeStartDate={changeStartDate}
+                changeEndDate={changeEndDate}
+                history={this.props.history}
+              />
+            )}
             <Scrollbars className={styles.history_wrapper}>
               {this.props.user &&
                 this.props.history.data
                   .filter(item => {
                     let date = new Date(item.date);
-                    if (dateFilter) return startDate <= date && date <= endDate;
+                    if (this.state.filter)
+                      return startDate <= date && date <= endDate;
                     else return true;
                   })
                   .map(item => (
@@ -71,4 +96,12 @@ class History extends Component {
   }
 }
 
-export default History;
+const mapStateToProps = state => ({
+  history: state.history,
+  user: state.user.username,
+});
+
+export default connect(
+  mapStateToProps,
+  { changeStartDate, changeEndDate, getHistory }
+)(History);

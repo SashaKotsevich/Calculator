@@ -1,13 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
 import BurgerButton from "./BurgerButton";
-
 import styles from "../styles/navBar.css";
 
 function NavBar(props) {
-  const { switchSideBar, logout, user } = props;
-  const { isSideBar } = props.application;
+  const { switchSideBar, logout, user, isSideBar } = props;
   return (
     <nav className={styles.nav_wrapper}>
       <BurgerButton action={switchSideBar} state={isSideBar} />

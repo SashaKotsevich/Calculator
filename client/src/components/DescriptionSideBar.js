@@ -1,12 +1,11 @@
 import React from "react";
 import { Scrollbars } from "react-custom-scrollbars";
-
 import styles from "../styles/descriptionSideBar.css";
 
 function DescriptionSideBar(props) {
   const handleCloseClick = event => {
     event.preventDefault();
-    props.action();
+    props.action(false);
   };
   const { type, expression, result, description } = props.data;
 
