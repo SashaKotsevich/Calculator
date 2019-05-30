@@ -34,7 +34,15 @@ const calculate = expression => {
 	let operatorStack = [];
 	let operandStack = [];
 	const brackets = ["(", ")"];
-	const operatorsPriority = { "+": 1, "-": 1, "*": 2, "÷": 2, "^": 3, "√": 4 };
+	const operatorsPriority = {
+		"+": 1,
+		"-": 1,
+		"*": 2,
+		"÷": 2,
+		"%": 2,
+		"^": 3,
+		"√": 4,
+	};
 	const description = [];
 
 	const operatorCaller = position => {
