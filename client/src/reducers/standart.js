@@ -32,7 +32,7 @@ export default function(state = initialState, action) {
       return { ...state, expression: action.payload };
 
     case CALCULATE_REQUEST:
-      return state;
+      return { ...state, result: "" };
 
     case CALCULATE_SUCCESS:
       return {
@@ -41,7 +41,7 @@ export default function(state = initialState, action) {
         description: action.payload.description,
       };
     case CALCULATE_FAILURE:
-      return state;
+      return { ...state, valid: false, result: "Failure" };
 
     case SWITCH_VALID_STANDART:
       return { ...state, valid: action.payload };

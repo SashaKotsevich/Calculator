@@ -28,10 +28,6 @@ const signIn = async ({ email, password }) => {
 };
 
 const signUp = async ({ name, email, password }) => {
-	const user = await User.findOne({ email });
-	if (user) {
-		return { error: "This email already taken." };
-	}
 	let newUser = new User({
 		name,
 		email,
@@ -44,7 +40,11 @@ const signUp = async ({ name, email, password }) => {
 			newUser.password = hash;
 		});
 	});
-	await newUser.save();
+	try {
+		await newUser.save();
+	} catch (e) {
+		return { error: e.massage };
+	}
 	let token = await generateToken(newUser).token;
 
 	return {

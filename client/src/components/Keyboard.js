@@ -8,17 +8,17 @@ import {
   calculate,
 } from "../actions/standartActions";
 import KeyboardButton from "./KeyboardButton";
+import ToggleButton from "./ToggleButton";
 import styles from "../styles/keyboard.css";
 
 class Keyboard extends Component {
   state = {
     descPanel: false,
   };
-  switchDescPanel = event => {
-    const { checked } = event.target;
-    this.setState({
-      descPanel: checked,
-    });
+  switchDescPanel = () => {
+    this.setState(prevState => ({
+      descPanel: !prevState.descPanel,
+    }));
   };
 
   combineActions = () => {
@@ -32,12 +32,7 @@ class Keyboard extends Component {
     return (
       <>
         <section className={styles.check_wrapper}>
-          <label>show description</label>
-          <input
-            type="checkbox"
-            value={descPanel}
-            onChange={this.switchDescPanel}
-          />
+          <ToggleButton onClick={this.switchDescPanel} />
         </section>
         <div className={styles.keyboard_wrapper}>
           <KeyboardButton char={"%"} action={addChar} />

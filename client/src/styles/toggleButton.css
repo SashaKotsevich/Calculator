@@ -1,0 +1,34 @@
+.wrapper{
+  height: 22px;
+  width: 40px;
+   background: rgba(70, 70, 70, 0.7 );
+   box-shadow: 0 0 5px 0  #202020;
+border-radius: 10px;
+}
+.switch_standart{
+  border-radius: 50%;
+  height: 18px;
+  width: 18px;
+  background: rgba(40, 40, 40, 0.7 );
+  margin: 2px;
+  
+  float: left;
+}
+.switch_on{
+  composes:switch_standart;
+  animation: on  0.2s  1 linear;
+  margin-left: 20px;
+}
+.switch_off{
+  composes:switch_standart;
+  animation: off  0.2s  1 linear ;
+  
+}
+@keyframes on {
+  from {margin-left: 2px;}
+    to {margin-left: 20px;}
+}
+@keyframes off {
+  from {margin-left: 20px;}
+    to {margin-left: 2px;}
+}
