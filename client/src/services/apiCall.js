@@ -68,7 +68,7 @@ export function calculateRequest(expression, token) {
     })
     .then(response => {
       if (!response.success) throw new Error(response.json().message);
-      if ((response.data.result = null)) throw new Error();
+      if (!response.data.result) throw new Error();
       return response;
     });
 }
