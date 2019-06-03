@@ -3,7 +3,15 @@ Array.prototype.last = function() {
 };
 
 const evaluate = str => {
-	return calculate(parse(str));
+	try {
+		let res = calculate(parse(str));
+		if (!isFinite(res.value)) {
+			return { error: "unvalid expression" };
+		}
+		return res;
+	} catch (e) {
+		return { error: e.message };
+	}
 };
 
 const parse = str => {

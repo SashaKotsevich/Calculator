@@ -6,10 +6,12 @@ const calculateController = async (req, res) => {
 	let result;
 	let user = jwt.decode(req.headers.authorization.split(" ")[1]);
 
-	try {
-		result = await math.evaluate(req.body.expression);
+	result = await math.evaluate(req.body.expression);
+	if (result.error) {
+		res.json({ success: false, message: result.error });
+	} else {
+		console.log(result);
 		if (user) {
-			console.log(user);
 			history.saveAction({
 				user_id: user.id,
 				type: "Calculate",
@@ -19,11 +21,9 @@ const calculateController = async (req, res) => {
 				result: result.value,
 			});
 		}
-	} catch (e) {
-		res.json({ success: false, message: e.message });
-	}
 
-	res.json({ success: true, data: result, message: "Ok" });
+		res.json({ success: true, data: result, message: "Ok" });
+	}
 };
 
 const convertController = async (req, res) => {
