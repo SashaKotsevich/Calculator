@@ -10,7 +10,6 @@ const calculateController = async (req, res) => {
 	if (result.error) {
 		res.json({ success: false, message: result.error });
 	} else {
-		console.log(result);
 		if (user) {
 			history.saveAction({
 				user_id: user.id,
