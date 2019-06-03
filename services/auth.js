@@ -29,7 +29,7 @@ const signIn = async ({ email, password }) => {
 
 const signUp = async ({ name, email, password }) => {
 	const user = await User.findOne({ email });
-	if (!user) return { error: "Email is already taken" };
+	if (user) return { error: "Email is already taken" };
 	let newUser = new User({
 		name,
 		email,
